@@ -5,10 +5,16 @@ import { get } from "lodash";
 import { getRecentReleases } from "../../../apis/themoviedbApi";
 
 import MovieGrid from "../MovieGrid";
+import MovieDetailPanel from "../MovieDetailPanel";
+
 
 class RecentReleases extends React.Component {
 
-	state={};
+	constructor(props) {
+		super(props);
+		this.state={};
+		this.updateMoviePanel = this.updateMoviePanel.bind(this);		
+	}
 
     componentDidMount() {
         this.getRecentReleases();
@@ -16,15 +22,21 @@ class RecentReleases extends React.Component {
 
     async getRecentReleases()  {
 		const recentReleases = await getRecentReleases();
-		console.log('getRecentReleases', recentReleases);
 		this.setState(() => ({ recentReleases }));
 	}
 	
+	updateMoviePanel (movieDetails){
+		this.setState(() => ({ movieDetails }));
+	}
+
 	render() {
-		const movieList = get(this.state, 'recentReleases.results')
+		const movieList = get(this.state, 'recentReleases.results');
+		const movieDetails = get(this.state, 'movieDetails');
+
 		return (
 			<div>
-				<MovieGrid movieList={movieList}/>
+				<MovieGrid movieList={movieList} updateMoviePanel={this.updateMoviePanel} />
+				<MovieDetailPanel {...movieDetails} />
 			</div>
 		);
 	}

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { get } from "lodash";
 
 import { getMovieDetails } from "../../../apis/themoviedbApi";
 
@@ -22,25 +23,35 @@ import { getMovieDetails } from "../../../apis/themoviedbApi";
 
 class MovieGridItem extends React.Component {
 
+
+
 	constructor(props) {
 		super(props);
-		this.handleClickEvent = this.handleClickEvent.bind(this);
+		this.state={};
+		this.handleClickEvent = this.handleClickEvent.bind(this);		
 	}
 
 	async getMovieDetails() {
-		const movieDetails = getMovieDetails(this.props.id);
-
-		console.log("getMovieDetails", movieDetails);
+		const movieDetails = await getMovieDetails(this.props.id);
 		this.setState(() => ({ movieDetails }));
+		this.props.updateMoviePanel(movieDetails);
 	}
 
 	handleClickEvent = e => {
-		this.getMovieDetails();
+		// if the state 
+		if(!(this.state.movieDetails)){
+			this.getMovieDetails();
+		}
+		else {
+			this.props.updateMoviePanel(this.state.movieDetails);
+		}
 	};
 
 	render() {
 		let posterBaseUrl = "http://image.tmdb.org/t/p/";
 		let posterWidth = "300";
+
+		console.log('render', this.state);
 
 		const { title, poster_path } = this.props;
 		return (
@@ -48,6 +59,7 @@ class MovieGridItem extends React.Component {
 				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} />
 				{title}
 			</div>
+			
 		);
 	}
 }

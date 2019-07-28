@@ -34,8 +34,6 @@ function getMovieDetails(id) {
         response => response.json()
     );
 
-    console.log(response);
-
     return response;
 
 }

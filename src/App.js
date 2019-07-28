@@ -9,7 +9,7 @@ import RecentReleases from "./components/organisms/RecentReleases";
 function App() {
 	return (
 		<Page>
-			<Header />
+			<Header pageTitle={'New Releases'}/>
 			<RecentReleases />
 			<Footer />
 		</Page>
