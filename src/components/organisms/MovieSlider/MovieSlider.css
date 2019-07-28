@@ -1,9 +1,44 @@
+.movie_slider_container {
+    margin: 0 -40px;
+    box-sizing: border-box;
+}
 .movie_slider {
-    margin: 0 100px;
+    margin: 0;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    background: #e7e8e7;
+    border-bottom: 1px solid #dadada;
 }
+
 .slick-arrow {
-    background: #ff00ea;
+    border-radius: 0;
+    height: 40px;
 }
+.slick-arrow:before {
+    content:'';
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 100%;
+    display: block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iMmFhMTI2NTUtMjM5My00ZGNlLThiYTQtZGJiMTcxMjdjODgxIiBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0LjAyIDU4LjU4Ij48dGl0bGU+Y2hldnJvbi1sZWZ0PC90aXRsZT48cG9seWxpbmUgcG9pbnRzPSIyMy4wMiA1Ny41OCAxLjI2IDI5LjI5IDIzLjAyIDEiIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMTAxMDE7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjJweCIvPjwvc3ZnPg==);
+}
+.slick-dots {
+    width: calc(100% - 200px);
+    bottom: -40px;
+}
+
+.slick-arrow.slick-prev {
+    left: 50px;
+}
+.slick-arrow.slick-next {
+    right: 50px;
+    transform: rotate(180deg) translate(0, 50%);
+}
+
 .movie_slider.slick-initialized .slick-slide > div {
-    padding: 15px;
+    padding: 40px 15px;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    color: inherit
 }

@@ -23,21 +23,22 @@ const slickSettings = () => {
 };
 
 const MovieSlider = props => {
-
 	const { movieList, updateMoviePanel } = props;
 
 	return (
-		<Slider className={'movie_slider'} {...slickSettings()} >
-			{Array.isArray(movieList)
-				? movieList.map((e, i) => {
-						return (
-							<div className="movie_slider_item" key={i}>
-								<MovieSliderItem {...e} updateMoviePanel={updateMoviePanel} />
-							</div>
-						);
-					})
-				: <div>No Movies</div>}
-		</Slider>
+		<div className={"movie_slider_container"}>
+			<Slider className={"movie_slider"} {...slickSettings()}>
+				{Array.isArray(movieList)
+					? movieList.map((e, i) => {
+							return (
+								<div className="movie_slider_item" key={i}>
+									<MovieSliderItem {...e} updateMoviePanel={updateMoviePanel} />
+								</div>
+							);
+						})
+					: <div>No Movies</div>}
+			</Slider>
+		</div>
 	);
 };
 

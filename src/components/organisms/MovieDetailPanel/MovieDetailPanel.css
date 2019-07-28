@@ -1,13 +1,5 @@
 .movie_detail_panel {
-
-    padding: 40px;
-
-    /* display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-    margin: 0; */
-
+    padding: 40px 140px;
 }
 
 .movie_detail_panel_top {
@@ -16,10 +8,25 @@
     align-items: center;
 }
 
-
 .movie_detail_panel_top_details ul {
     list-style: none;
     display: flex;
     flex-direction: row;
-
+    color: #828282;
 }
+.movie_detail_panel_top_details ul li{
+    margin-right: 20px;
+}
+.movie_detail_panel_top_details ul > li:after{
+    content: '•';
+    position: relative;
+    right: -10px;
+}
+.movie_detail_panel_top_details ul > li:last-of-type:after{
+    display: none;
+}
+.movie_detail_panel_body_overview {
+    width: 50%;
+    line-height: 1.6em;
+}
+

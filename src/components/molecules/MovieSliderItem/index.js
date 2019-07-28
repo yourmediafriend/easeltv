@@ -25,8 +25,6 @@ import './MovieSliderItem.css'
 
 class MovieGridItem extends React.Component {
 
-
-
 	constructor(props) {
 		super(props);
 		this.state={};
@@ -53,17 +51,14 @@ class MovieGridItem extends React.Component {
 		let posterBaseUrl = "http://image.tmdb.org/t/p/";
 		let posterWidth = "300";
 
-		console.log('render', this.state);
-
 		const { title, poster_path } = this.props;
+
 		return (
 			<div onClick={this.handleClickEvent} className='movie_card'>
 				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} className='movie_card_poster_img'/>
-
 				<div className={'movie_card_details'}>
 					{title}
 				</div>
-				
 			</div>
 			
 		);

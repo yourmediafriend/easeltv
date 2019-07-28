@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import "./MovieDetailPanel.css";
 
 /* 
+
+7a853a18982534324765451949fc1655
+
+299534
+
 adult: false
 backdrop_path: "/dihW2yTsvQlust7mSuAqJDtqW7k.jpg"
 belongs_to_collection: {id: 531241, name: "Spider-Man (Avengers) Collection", poster_path: "/nogV4th2P5QWYvQIMiWHj4CFLU9.jpg", backdrop_path: "/AvnqpRwlEaYNVL6wzC4RN94EdSd.jpg"}
@@ -30,11 +35,38 @@ vote_average: 7.8
 vote_count: 2494 
 
 
+## Add Supported Image Sizes  
+                                 Min Res      Max Res  
+poster   = Poster ............  500 x 750   2000 x 3000  
+backdrop = Fanart ............ 1280 x 720   3840 x 2160  
+still    = TV Show Episode ... 1280 x 720   3840 x 2160  
+profile  = Actors Actresses ..  300 x 450   2000 x 3000  
+logo     = TMDb Logo  
+
+## API Supported Image Sizes  
+
+|  poster  | backdrop |  still   | profile  |   logo   |
+| :------: | :------: | :------: | :------: | :------: |
+| -------- | -------- | -------- |    w45   |    w45   |
+|    w92   | -------- |    w92   | -------- |    w92   |
+|   w154   | -------- | -------- | -------- |   w154   |
+|   w185   | -------- |   w185   |   w185   |   w185   |
+| -------- |   w300   |   w300   | -------- |   w300   |
+|   w342   | -------- | -------- | -------- | -------- |
+|   w500   | -------- | -------- | -------- |   w500   |
+| -------- | -------- | -------- |   h632   | -------- |
+|   w780   |   w780   | -------- | -------- | -------- |
+| -------- |  w1280   | -------- | -------- | -------- |
+| original | original | original | original | original |  
+
+Original Size is the size of the uploaded image.  
+It can be between Minimum Resolution and Maximum Resolution.  
+
+http://image.tmdb.org/t/p/original//dihW2yTsvQlust7mSuAqJDtqW7k.jpg
 */
 
 const MovieDetailPanel = props => {
-	console.log(props);
-
+	
 	const {
 		overview,
 		original_title,
@@ -46,9 +78,28 @@ const MovieDetailPanel = props => {
 	} = props;
 
 	let year;
+	let genre_str;
+	let production_countries_str;
 
 	if (release_date) {
 		year = release_date.split("-")[0];
+	}
+
+	// Turn these into utility method
+	if (Array.isArray(genres)) {
+		genre_str = production_countries
+			.flatMap(({ name }) => {
+				return name;
+			})
+			.join(", ");
+	}
+
+	if (Array.isArray(production_countries_str)) {
+		production_countries_str = production_countries_str
+			.flatMap(({ name }) => {
+				return name;
+			})
+			.join(", ");
 	}
 
 	return (
@@ -68,40 +119,26 @@ const MovieDetailPanel = props => {
 									{year}
 								</li>
 							: null}
-						{Array.isArray(genres)
+						{genre_str
 							? <li>
-									<ul>
-										{genres.map((e, i) => {
-											return (
-												<li>
-													{e.name}
-												</li>
-											);
-										})}
-									</ul>
+									{genre_str}
 								</li>
 							: null}
-						{Array.isArray(production_countries)
+						{production_countries_str
 							? <li>
-									<ul>
-										{production_countries.map((e, i) => {
-											return (
-												<li>
-													{e.iso_3166_1}
-												</li>
-											);
-										})}
-									</ul>
+									{production_countries_str}
 								</li>
 							: null}
-						
 					</ul>
 				</div>
 			</div>
-
-			<p>
-				{overview}
-			</p>
+			<div className="movie_detail_panel_body">
+				<div className="movie_detail_panel_body_overview">
+					<p>
+						{overview}
+					</p>
+				</div>
+			</div>
 		</div>
 	);
 };
