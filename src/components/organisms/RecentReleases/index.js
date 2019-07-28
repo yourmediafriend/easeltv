@@ -1,28 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { get } from "lodash";
 
-import getRecentReleases from "../../../apis/themoviedbApi";
+import { getRecentReleases } from "../../../apis/themoviedbApi";
+
+import MovieGrid from "../MovieGrid";
 
 class RecentReleases extends React.Component {
 
+	state={};
+
     componentDidMount() {
-        this.getRecentReleasesX();
+        this.getRecentReleases();
     }
 
-    async getRecentReleasesX()  {
-
+    async getRecentReleases()  {
 		const recentReleases = await getRecentReleases();
-
-		console.log(recentReleases);
-
+		console.log('getRecentReleases', recentReleases);
 		this.setState(() => ({ recentReleases }));
-
-    }
-
+	}
+	
 	render() {
+		const movieList = get(this.state, 'recentReleases.results')
 		return (
 			<div>
-				Empty Compo
+				<MovieGrid movieList={movieList}/>
 			</div>
 		);
 	}

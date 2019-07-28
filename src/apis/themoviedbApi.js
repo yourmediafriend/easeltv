@@ -1,19 +1,44 @@
 const movieDBKey = "7a853a18982534324765451949fc1655";
-const movieDbDiscover = "https://api.themoviedb.org/3/discover/movie";
+const movieDbDiscoverUrl = "https://api.themoviedb.org/3/discover/movie";
+const movieDbMovieUrl = "https://api.themoviedb.org/3/movie";
+
+let language = 'en-US'
 
 
-async function getRecentReleases() {
+
+function getRecentReleases() {
 
     let current_datetime = new Date();
     let formatted_current_date =  `${current_datetime.getFullYear()}-${current_datetime.getMonth()}-${current_datetime.getDate()}`           
 
-    const params = `?api_key=${movieDBKey}&primary_release_date.lte=${formatted_current_date}`;
+    const params = `?api_key=${movieDBKey}&language=${language}&primary_release_date.lte=${formatted_current_date}`;
 
-	const response = await fetch(
-		`${movieDbDiscover}${params}`
-	);
+	const response = fetch(
+		`${movieDbDiscoverUrl}${params}`
+    ).then(
+        response => response.json()
+    );
 
-	return response.json;
+    return response;
+
 }
 
-export default getRecentReleases;
+
+function getMovieDetails(id) {
+
+    const params = `/${id}?api_key=${movieDBKey}&language=${language}`;
+
+	const response = fetch(
+		`${movieDbMovieUrl}${params}`
+    ).then(
+        response => response.json()
+    );
+
+    console.log(response);
+
+    return response;
+
+}
+
+
+export { getRecentReleases, getMovieDetails };
