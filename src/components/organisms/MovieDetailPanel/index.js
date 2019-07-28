@@ -30,41 +30,84 @@ vote_average: 7.8
 vote_count: 2494 
 
 
-			{Array.isArray(genres) ?
-				<ul>
-					{genres.map((e,i)=>{
-						return(
-							<li>{e}</li>
-						)
-					})}
-				</ul> : null}
-			
-
-
 */
 
-
 const MovieDetailPanel = props => {
+	console.log(props);
 
-	const { overview,  original_title, genres, runtime, title, } = props;
-	
+	const {
+		overview,
+		original_title,
+		genres,
+		production_countries,
+		runtime,
+		title,
+		release_date
+	} = props;
+
+	let year;
+
+	if (release_date) {
+		year = release_date.split("-")[0];
+	}
+
 	return (
 		<div className="movie_detail_panel">
-			<h2>{title}</h2>
-			{original_title!==title ? <h5>{original_title}</h5> : null}
-			
-			<p>{runtime} min</p>
-		
-			<p>{overview}</p>
+			<div className="movie_detail_panel_top">
+				<div className="movie_detail_panel_top_title title">
+					<h2 className="title_main">
+						{title}
+					</h2>
+					{/* 	{original_title!==title ? <h5 className="title_original">{original_title}</h5> : null} */}
+				</div>
+				<div className="movie_detail_panel_top_details">
+					<ul>
+						{runtime ? <li>{`${runtime} min`}</li> : null}
+						{year
+							? <li>
+									{year}
+								</li>
+							: null}
+						{Array.isArray(genres)
+							? <li>
+									<ul>
+										{genres.map((e, i) => {
+											return (
+												<li>
+													{e.name}
+												</li>
+											);
+										})}
+									</ul>
+								</li>
+							: null}
+						{Array.isArray(production_countries)
+							? <li>
+									<ul>
+										{production_countries.map((e, i) => {
+											return (
+												<li>
+													{e.iso_3166_1}
+												</li>
+											);
+										})}
+									</ul>
+								</li>
+							: null}
+						
+					</ul>
+				</div>
+			</div>
 
-
-
+			<p>
+				{overview}
+			</p>
 		</div>
 	);
 };
 
 MovieDetailPanel.props = {
-    movieDetails: PropTypes.object
+	movieDetails: PropTypes.object
 };
 
 export default MovieDetailPanel;

@@ -4,7 +4,7 @@ import { get } from "lodash";
 
 import { getRecentReleases } from "../../../apis/themoviedbApi";
 
-import MovieGrid from "../MovieGrid";
+import MovieSlider from "../MovieSlider";
 import MovieDetailPanel from "../MovieDetailPanel";
 
 
@@ -35,7 +35,7 @@ class RecentReleases extends React.Component {
 
 		return (
 			<div>
-				<MovieGrid movieList={movieList} updateMoviePanel={this.updateMoviePanel} />
+				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel} />
 				<MovieDetailPanel {...movieDetails} />
 			</div>
 		);

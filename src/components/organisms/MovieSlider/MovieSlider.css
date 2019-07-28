@@ -1,0 +1,9 @@
+.movie_slider {
+    margin: 0 100px;
+}
+.slick-arrow {
+    background: #ff00ea;
+}
+.movie_slider.slick-initialized .slick-slide > div {
+    padding: 15px;
+}

@@ -1,7 +1,25 @@
-.moviegrid {
-    display: flex;
+.movie_detail_panel {
+
+    padding: 40px;
+
+    /* display: flex;
     flex-direction: row;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0; */
+
+}
+
+.movie_detail_panel_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.movie_detail_panel_top_details ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
 }

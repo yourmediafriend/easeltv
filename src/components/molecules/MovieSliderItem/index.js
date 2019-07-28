@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { get } from "lodash";
 
 import { getMovieDetails } from "../../../apis/themoviedbApi";
+import './MovieSliderItem.css'
+
 
 /* 
 	adult: false
@@ -55,9 +57,13 @@ class MovieGridItem extends React.Component {
 
 		const { title, poster_path } = this.props;
 		return (
-			<div onClick={this.handleClickEvent}>
-				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} />
-				{title}
+			<div onClick={this.handleClickEvent} className='movie_card'>
+				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} className='movie_card_poster_img'/>
+
+				<div className={'movie_card_details'}>
+					{title}
+				</div>
+				
 			</div>
 			
 		);
