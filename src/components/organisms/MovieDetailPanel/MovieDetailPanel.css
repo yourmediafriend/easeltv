@@ -1,35 +1,57 @@
-.movie_detail_panel {
+.movie_details {
+	display: flex;
+	flex-direction: row;
 	padding: 60px 100px;
 }
 
-.movie_detail_panel_top {
+.details_panel {
+	
+}
+.trailer_panel {
+	margin-right: 35px;
+}
+
+.details_panel_top {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	margin-bottom: 25px;
 }
-
-.movie_detail_panel_top_details ul {
+.details_panel_top .title_main{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.details_panel_top_details ul {
+	margin-top: 0;
+	margin-bottom: 0;
 	list-style: none;
 	display: flex;
 	flex-direction: row;
 	color: #828282;
 }
 
-.movie_detail_panel_top_details ul li {
+.details_panel_top_details ul li {
 	margin-right: 20px;
 }
 
-.movie_detail_panel_top_details ul > li:after {
+.details_panel_top_details ul > li:after {
 	content: '•';
 	position: relative;
 	right: -10px;
 }
 
-.movie_detail_panel_top_details ul > li:last-of-type:after {
+.details_panel_top_details ul > li:last-of-type:after {
 	display: none;
 }
 
-.movie_detail_panel_body_overview {
+.details_panel_body {
+	display: flex;
+	flex-direction: row;
+}
+.details_panel_body_overview {
 	width: 50%;
 	line-height: 1.6em;
+}
+.details_panel_body_overview p {
+	margin-top: 0;
 }

@@ -1,19 +1,27 @@
 import React from "react";
 import "./TrailerLink.css";
 
-const TrailerLink = props => {
+class TrailerLink extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleClickEvent = this.handleClickEvent.bind(this);
+	}
 
-    const {TrailerImage, Trailertitle, TrailerUrl} = props;
+    handleClickEvent() {
+        const {  Trailertitle, TrailerUrl, onClick } = this.props;
+        onClick(Trailertitle, TrailerUrl);
+    }
 
+	render() {
+		const { TrailerImage, Trailertitle, TrailerUrl, onClick } = this.props;
+		return (
+			<div className="link_container" onClick={this.handleClickEvent}>
+				<img src={TrailerImage} alt="" />
+			</div>
+		);
+	}
+}
 
-	return (
-
-        <div className="link_container" onClick>
-			<img src={TrailerImage} alt="" />
-
-        </div>
-
-	);
-};
+TrailerLink.props = {};
 
 export default TrailerLink;

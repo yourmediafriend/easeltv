@@ -6,14 +6,16 @@ import { getRecentReleases } from "../../../apis/themoviedbApi";
 
 import MovieSlider from "../MovieSlider";
 import MovieDetailPanel from "../MovieDetailPanel";
-
+import TrailerModal from "../TrailerModal";
 
 class RecentReleases extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state={};
-		this.updateMoviePanel = this.updateMoviePanel.bind(this);		
+		this.updateMoviePanel = this.updateMoviePanel.bind(this);
+		this.handleOpenModal = this.handleOpenModal.bind(this);	
+		this.handleCloseModal = this.handleCloseModal.bind(this);			
 	}
 
     componentDidMount() {
@@ -29,6 +31,14 @@ class RecentReleases extends React.Component {
 		this.setState(() => ({ movieDetails, movieVideos }));
 	}
 
+	handleOpenModal (){
+		this.setState(() => ({ modalOpen: true }));
+	}
+
+	handleCloseModal (){
+		this.setState(() => ({ modalOpen: false }));
+	}
+
 	render() {
 		const movieList = get(this.state, 'recentReleases.results');
 		const movieDetails = get(this.state, 'movieDetails');
@@ -36,8 +46,9 @@ class RecentReleases extends React.Component {
 
 		return (
 			<div>
-				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel} />
-				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} />
+				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel}  />
+				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} handleOpenModal={this.handleOpenModal}/>
+				<TrailerModal  modalOpen={this.state.modalOpen} handleCloseModal={this.handleCloseModal}/>
 			</div>
 		);
 	}

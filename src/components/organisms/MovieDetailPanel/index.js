@@ -68,8 +68,7 @@ http://image.tmdb.org/t/p/original//dihW2yTsvQlust7mSuAqJDtqW7k.jpg
 */
 
 const MovieDetailPanel = props => {
-
-	console.log(props)
+	console.log(props);
 
 	const {
 		backdrop_path,
@@ -81,11 +80,12 @@ const MovieDetailPanel = props => {
 		title,
 		release_date,
 		movieVideos,
+		handleOpenModal
 	} = props;
 
 	const youTubeUrl = "https://www.youtube.com/watch";
 	const backdropSize = "w300";
-	const backdropImageUrl = 'http://image.tmdb.org/t/p/';
+	const backdropImageUrl = "http://image.tmdb.org/t/p/";
 
 	let year;
 	let genre_str;
@@ -113,66 +113,62 @@ const MovieDetailPanel = props => {
 			.join(", ");
 	}
 
-
 	if (movieVideos) {
-		
-		let trailer = movieVideos.filter(a => a.type==='Trailer');
-
-		if (trailer[0].site === 'YouTube') {
-			let params = `?v=${trailer[0].key}`
-			trailerUrl = `${youTubeUrl}${params}`
+		let trailer = movieVideos.filter(a => a.type === "Trailer");
+		if (trailer[0].site === "YouTube") {
+			let params = `?v=${trailer[0].key}`;
+			trailerUrl = `${youTubeUrl}${params}`;
 		}
-
-		console.log(trailer)
-		console.log(trailerUrl)
-	
 	}
 
-
-
-
-
 	return (
-		<div className="movie_detail_panel">
-			<div className="movie_detail_panel_top">
-				<div className="movie_detail_panel_top_title title">
-					<h2 className="title_main">
-						{title}
-					</h2>
-					{/* 	{original_title!==title ? <h5 className="title_original">{original_title}</h5> : null} */}
+		<div className="movie_details">
+			{trailerUrl
+				? <div className="trailer_panel">
+						<TrailerLink
+							TrailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`}
+							Trailertitle={title}
+							TrailerUrl={trailerUrl}
+							onClick={handleOpenModal}
+						/>
+					</div>
+				: null}
+			<div className="details_panel">
+				<div className="details_panel_top">
+					<div className="movie_detail_panel_top_title title">
+						<h2 className="title_main">
+							{title}
+						</h2>
+						{/* 	{original_title!==title ? <h5 className="title_original">{original_title}</h5> : null} */}
+					</div>
+					<div className="details_panel_top_details">
+						<ul>
+							{runtime ? <li>{`${runtime} min`}</li> : null}
+							{year
+								? <li>
+										{year}
+									</li>
+								: null}
+							{genre_str
+								? <li>
+										{genre_str}
+									</li>
+								: null}
+							{production_countries_str
+								? <li>
+										{production_countries_str}
+									</li>
+								: null}
+						</ul>
+					</div>
 				</div>
-				<div className="movie_detail_panel_top_details">
-					<ul>
-						{runtime ? <li>{`${runtime} min`}</li> : null}
-						{year
-							? <li>
-									{year}
-								</li>
-							: null}
-						{genre_str
-							? <li>
-									{genre_str}
-								</li>
-							: null}
-						{production_countries_str
-							? <li>
-									{production_countries_str}
-								</li>
-							: null}
-					</ul>
+				<div className="details_panel_body">
+					<div className="details_panel_body_overview">
+						<p>
+							{overview}
+						</p>
+					</div>
 				</div>
-			</div>
-			<div className="movie_detail_panel_body">
-
-				{trailerUrl ? <TrailerLink TrailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`} Trailertitle={title} TrailerUrl={trailerUrl} /> : null }
-	
-				<div className="movie_detail_panel_body_overview">
-					<p>
-						{overview}
-					</p>
-				</div>
-
-
 			</div>
 		</div>
 	);
