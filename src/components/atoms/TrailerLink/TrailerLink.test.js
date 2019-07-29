@@ -1,5 +1,4 @@
 import React from 'react';
-import { create } from "react-test-renderer";
 import ReactDOM from 'react-dom';
 import TrailerLink from './index';
 

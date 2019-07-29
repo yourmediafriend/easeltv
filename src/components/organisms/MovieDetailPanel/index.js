@@ -17,7 +17,6 @@ const MovieDetailPanel = props => {
 		handleOpenModal
 	} = props;
 
-
 	const backdropSize = "w300";
 	const backdropImageUrl = "http://image.tmdb.org/t/p/";
 
@@ -50,48 +49,34 @@ const MovieDetailPanel = props => {
 	if (movieVideos) {
 		let trailer = movieVideos.filter(a => a.type === "Trailer");
 		if (trailer[0].site === "YouTube") {
-			trailerId = trailer[0].key
+			trailerId = trailer[0].key;
 		}
 	}
 
 	return (
 		<div className="movie_details">
 			{trailerId
-				? <div className="trailer_panel">
+				&& <div className="trailer_panel">
 						<TrailerLink
 							trailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`}
 							trailerTitle={title}
 							trailerId={trailerId}
 							onClick={handleOpenModal}
 						/>
-					</div>
-				: null}
+					</div> }
 			<div className="details_panel">
 				<div className="details_panel_top">
 					<div className="movie_detail_panel_top_title title">
 						<h2 className="title_main">
 							{title}
 						</h2>
-						{/* 	{original_title!==title ? <h5 className="title_original">{original_title}</h5> : null} */}
 					</div>
 					<div className="details_panel_top_details">
 						<ul>
-							{runtime ? <li>{`${runtime} min`}</li> : null}
-							{year
-								? <li>
-										{year}
-									</li>
-								: null}
-							{genre_str
-								? <li>
-										{genre_str}
-									</li>
-								: null}
-							{production_countries_str
-								? <li>
-										{production_countries_str}
-									</li>
-								: null}
+							{runtime && <li>{`${runtime} min`}</li>}
+							{year && <li>{year}</li>}
+							{genre_str && <li>{genre_str}</li>}
+							{production_countries_str && <li>{production_countries_str}</li>}
 						</ul>
 					</div>
 				</div>
@@ -117,7 +102,7 @@ MovieDetailPanel.props = {
 	title: PropTypes.string,
 	release_date: PropTypes.string,
 	movieVideos: PropTypes.array,
-	handleOpenModal: PropTypes.function,
+	handleOpenModal: PropTypes.function
 };
 
 export default MovieDetailPanel;

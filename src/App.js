@@ -11,9 +11,9 @@ function App() {
 	return (
 		<Page>
 			<Header pageTitle={'New Releases'}/>
-			<main className={'main'}>
+			<Main>
 				<RecentReleases />
-			</main>
+			</Main>
 			<Footer />
 		</Page>
 	);

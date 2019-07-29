@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { get } from "lodash";
 
 import { getRecentReleases } from "../../../apis/themoviedbApi";
@@ -50,7 +49,7 @@ class RecentReleases extends React.Component {
 				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel}  />
 				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} handleOpenModal={this.handleOpenModal}/>
 				<TrailerModal  modalOpen={this.state.modalOpen} handleCloseModal={this.handleCloseModal}>
-					{this.state.modalOpen ? <YouTubeEmbed trailerId={this.state.trailerId } autoplay={true} allowfullscreen={true} /> : null}
+					{this.state.modalOpen && <YouTubeEmbed trailerId={this.state.trailerId } />}
 				</TrailerModal>
 			</div>
 		);

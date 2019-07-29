@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { get } from "lodash";
 import { getMovieDetails, getMovieVideos } from "../../../apis/themoviedbApi";
 import './MovieSliderItem.css'
 
@@ -37,7 +36,7 @@ class MovieSliderItem extends React.Component {
 
 		return (
 			<div onClick={this.handleClickEvent} className='movie_card'>
-				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} className='movie_card_poster_img'/>
+				<img src={`${posterBaseUrl}w${posterWidth}/${poster_path}`} className='movie_card_poster_img' alt={title}/>
 				<div className={'movie_card_details'}>
 					{title}
 				</div>

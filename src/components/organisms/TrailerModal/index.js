@@ -31,11 +31,7 @@ class Modal extends React.Component {
 
 		const {children} = this.props;
 		return (
-			<div
-				className={`modal_container ${this.state.open
-					? "modal_container--active"
-					: null}`}
-			>
+			<div className={`modal_container ${this.state.open && "modal_container--active"}`}>
 				<header className="modal_header" >
 					<div className="close_button" onClick={this.handleCloseEvent} >
 						<span>Close</span>
