@@ -2,6 +2,7 @@
     margin: 0 -40px;
     box-sizing: border-box;
 }
+
 .movie_slider {
     margin: 0;
     padding: 0px 100px;
@@ -14,6 +15,7 @@
     border-radius: 0;
     height: 40px;
 }
+
 .slick-arrow:before {
     content:'';
     background-repeat: no-repeat;
@@ -30,6 +32,7 @@
 .slick-arrow.slick-prev {
     left: 50px;
 }
+
 .slick-arrow.slick-next {
     right: 50px;
     transform: rotate(180deg) translate(0, 50%);

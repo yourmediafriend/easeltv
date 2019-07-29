@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { get } from "lodash";
 
-import { getMovieDetails } from "../../../apis/themoviedbApi";
+import { getMovieDetails, getMovieVideos } from "../../../apis/themoviedbApi";
 import './MovieSliderItem.css'
 
 
@@ -33,17 +33,18 @@ class MovieGridItem extends React.Component {
 
 	async getMovieDetails() {
 		const movieDetails = await getMovieDetails(this.props.id);
-		this.setState(() => ({ movieDetails }));
-		this.props.updateMoviePanel(movieDetails);
+		const movieVideos = await getMovieVideos(this.props.id);
+	
+		this.setState(() => ({ movieDetails, movieVideos }));
+		this.props.updateMoviePanel(movieDetails, movieVideos);
 	}
 
 	handleClickEvent = e => {
-		// if the state 
 		if(!(this.state.movieDetails)){
 			this.getMovieDetails();
 		}
 		else {
-			this.props.updateMoviePanel(this.state.movieDetails);
+			this.props.updateMoviePanel(this.state.movieDetails, this.state.movieVideos);
 		}
 	};
 

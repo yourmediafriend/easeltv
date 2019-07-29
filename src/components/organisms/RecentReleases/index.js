@@ -25,18 +25,19 @@ class RecentReleases extends React.Component {
 		this.setState(() => ({ recentReleases }));
 	}
 	
-	updateMoviePanel (movieDetails){
-		this.setState(() => ({ movieDetails }));
+	updateMoviePanel (movieDetails, movieVideos){
+		this.setState(() => ({ movieDetails, movieVideos }));
 	}
 
 	render() {
 		const movieList = get(this.state, 'recentReleases.results');
 		const movieDetails = get(this.state, 'movieDetails');
+		const movieVideos = get(this.state, 'movieVideos.results');
 
 		return (
 			<div>
 				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel} />
-				<MovieDetailPanel {...movieDetails} />
+				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} />
 			</div>
 		);
 	}

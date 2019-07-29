@@ -5,7 +5,6 @@ const movieDbMovieUrl = "https://api.themoviedb.org/3/movie";
 let language = 'en-US'
 
 
-
 function getRecentReleases() {
 
     let current_datetime = new Date();
@@ -39,4 +38,19 @@ function getMovieDetails(id) {
 }
 
 
-export { getRecentReleases, getMovieDetails };
+function getMovieVideos(id) {
+
+    const params = `/${id}/videos?api_key=${movieDBKey}&language=${language}`;
+
+	const response = fetch(
+		`${movieDbMovieUrl}${params}`
+    ).then(
+        response => response.json()
+    );
+
+    return response;
+
+}
+
+
+export { getRecentReleases, getMovieDetails, getMovieVideos };

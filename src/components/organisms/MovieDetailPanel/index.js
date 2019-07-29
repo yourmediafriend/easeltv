@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./MovieDetailPanel.css";
 
+import TrailerLink from "../../atoms/TrailerLink";
+
 /* 
 
 7a853a18982534324765451949fc1655
@@ -66,20 +68,29 @@ http://image.tmdb.org/t/p/original//dihW2yTsvQlust7mSuAqJDtqW7k.jpg
 */
 
 const MovieDetailPanel = props => {
-	
+
+	console.log(props)
+
 	const {
+		backdrop_path,
 		overview,
 		original_title,
 		genres,
 		production_countries,
 		runtime,
 		title,
-		release_date
+		release_date,
+		movieVideos,
 	} = props;
+
+	const youTubeUrl = "https://www.youtube.com/watch";
+	const backdropSize = "w300";
+	const backdropImageUrl = 'http://image.tmdb.org/t/p/';
 
 	let year;
 	let genre_str;
 	let production_countries_str;
+	let trailerUrl;
 
 	if (release_date) {
 		year = release_date.split("-")[0];
@@ -87,20 +98,39 @@ const MovieDetailPanel = props => {
 
 	// Turn these into utility method
 	if (Array.isArray(genres)) {
-		genre_str = production_countries
+		genre_str = genres
 			.flatMap(({ name }) => {
 				return name;
 			})
 			.join(", ");
 	}
 
-	if (Array.isArray(production_countries_str)) {
-		production_countries_str = production_countries_str
+	if (Array.isArray(production_countries)) {
+		production_countries_str = production_countries
 			.flatMap(({ name }) => {
 				return name;
 			})
 			.join(", ");
 	}
+
+
+	if (movieVideos) {
+		
+		let trailer = movieVideos.filter(a => a.type==='Trailer');
+
+		if (trailer[0].site === 'YouTube') {
+			let params = `?v=${trailer[0].key}`
+			trailerUrl = `${youTubeUrl}${params}`
+		}
+
+		console.log(trailer)
+		console.log(trailerUrl)
+	
+	}
+
+
+
+
 
 	return (
 		<div className="movie_detail_panel">
@@ -133,11 +163,16 @@ const MovieDetailPanel = props => {
 				</div>
 			</div>
 			<div className="movie_detail_panel_body">
+
+				{trailerUrl ? <TrailerLink TrailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`} Trailertitle={title} TrailerUrl={trailerUrl} /> : null }
+	
 				<div className="movie_detail_panel_body_overview">
 					<p>
 						{overview}
 					</p>
 				</div>
+
+
 			</div>
 		</div>
 	);

@@ -1,32 +1,35 @@
 .movie_detail_panel {
-    padding: 40px 140px;
+	padding: 60px 100px;
 }
 
 .movie_detail_panel_top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .movie_detail_panel_top_details ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    color: #828282;
-}
-.movie_detail_panel_top_details ul li{
-    margin-right: 20px;
-}
-.movie_detail_panel_top_details ul > li:after{
-    content: '•';
-    position: relative;
-    right: -10px;
-}
-.movie_detail_panel_top_details ul > li:last-of-type:after{
-    display: none;
-}
-.movie_detail_panel_body_overview {
-    width: 50%;
-    line-height: 1.6em;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	color: #828282;
 }
 
+.movie_detail_panel_top_details ul li {
+	margin-right: 20px;
+}
+
+.movie_detail_panel_top_details ul > li:after {
+	content: '•';
+	position: relative;
+	right: -10px;
+}
+
+.movie_detail_panel_top_details ul > li:last-of-type:after {
+	display: none;
+}
+
+.movie_detail_panel_body_overview {
+	width: 50%;
+	line-height: 1.6em;
+}
