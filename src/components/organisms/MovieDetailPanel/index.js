@@ -4,72 +4,7 @@ import "./MovieDetailPanel.css";
 
 import TrailerLink from "../../atoms/TrailerLink";
 
-/* 
-
-7a853a18982534324765451949fc1655
-
-299534
-
-adult: false
-backdrop_path: "/dihW2yTsvQlust7mSuAqJDtqW7k.jpg"
-belongs_to_collection: {id: 531241, name: "Spider-Man (Avengers) Collection", poster_path: "/nogV4th2P5QWYvQIMiWHj4CFLU9.jpg", backdrop_path: "/AvnqpRwlEaYNVL6wzC4RN94EdSd.jpg"}
-budget: 160000000
-genres: (3) [{…}, {…}, {…}]
-homepage: "https://www.marvel.com/movies/spider-man-far-from-home"
-id: 429617
-imdb_id: "tt6320628"
-original_language: "en"
-original_title: "Spider-Man: Far from Home"
-overview: "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent."
-popularity: 254.42
-poster_path: "/rjbNpRMoVvqHmhmksbokcyCr7wn.jpg"
-production_companies: (5) [{…}, {…}, {…}, {…}, {…}]
-production_countries: [{…}]
-release_date: "2019-06-28"
-revenue: 982052266
-runtime: 129
-spoken_languages: (4) [{…}, {…}, {…}, {…}]
-status: "Released"
-tagline: ""
-title: "Spider-Man: Far from Home"
-video: false
-vote_average: 7.8
-vote_count: 2494 
-
-
-## Add Supported Image Sizes  
-                                 Min Res      Max Res  
-poster   = Poster ............  500 x 750   2000 x 3000  
-backdrop = Fanart ............ 1280 x 720   3840 x 2160  
-still    = TV Show Episode ... 1280 x 720   3840 x 2160  
-profile  = Actors Actresses ..  300 x 450   2000 x 3000  
-logo     = TMDb Logo  
-
-## API Supported Image Sizes  
-
-|  poster  | backdrop |  still   | profile  |   logo   |
-| :------: | :------: | :------: | :------: | :------: |
-| -------- | -------- | -------- |    w45   |    w45   |
-|    w92   | -------- |    w92   | -------- |    w92   |
-|   w154   | -------- | -------- | -------- |   w154   |
-|   w185   | -------- |   w185   |   w185   |   w185   |
-| -------- |   w300   |   w300   | -------- |   w300   |
-|   w342   | -------- | -------- | -------- | -------- |
-|   w500   | -------- | -------- | -------- |   w500   |
-| -------- | -------- | -------- |   h632   | -------- |
-|   w780   |   w780   | -------- | -------- | -------- |
-| -------- |  w1280   | -------- | -------- | -------- |
-| original | original | original | original | original |  
-
-Original Size is the size of the uploaded image.  
-It can be between Minimum Resolution and Maximum Resolution.  
-
-http://image.tmdb.org/t/p/original//dihW2yTsvQlust7mSuAqJDtqW7k.jpg
-*/
-
 const MovieDetailPanel = props => {
-	console.log(props);
-
 	const {
 		backdrop_path,
 		overview,

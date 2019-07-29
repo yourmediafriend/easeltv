@@ -1,12 +1,12 @@
 import React from 'react';
+import { create } from "react-test-renderer";
 import ReactDOM from 'react-dom';
-import Header from './Header';
+import MovieDetailPanel from './index';
 
-describe("Header component", () => {
+describe("MovieDetailPanel component", () => {
 	it('renders without crashing', () => {
 		const div = document.createElement('div');
-		ReactDOM.render(<Header />, div);
+		ReactDOM.render(<MovieDetailPanel />, div);
 		ReactDOM.unmountComponentAtNode(div);
 	})
 })
-

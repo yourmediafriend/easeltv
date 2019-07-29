@@ -9,7 +9,6 @@ import MovieDetailPanel from "../MovieDetailPanel";
 import TrailerModal from "../TrailerModal";
 import YouTubeEmbed from "../../atoms/YouTubeEmbed";
 
-
 class RecentReleases extends React.Component {
 
 	constructor(props) {
@@ -50,11 +49,9 @@ class RecentReleases extends React.Component {
 			<div>
 				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel}  />
 				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} handleOpenModal={this.handleOpenModal}/>
-				
 				<TrailerModal  modalOpen={this.state.modalOpen} handleCloseModal={this.handleCloseModal}>
 					{this.state.modalOpen ? <YouTubeEmbed trailerId={this.state.trailerId } autoplay={true} allowfullscreen={true} /> : null}
 				</TrailerModal>
-
 			</div>
 		);
 	}
