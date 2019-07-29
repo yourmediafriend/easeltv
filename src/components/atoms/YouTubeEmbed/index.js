@@ -1,13 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import YouTube from "react-youtube";
-
 import "./YouTubeEmbed.css";
 
 class YouTubeEmbed extends React.Component {
 	render() {
-		const youTubeEmbed = "https://www.youtube.com/embed/";
 
-		const { trailerId, autoplay } = this.props;
+		const { trailerId } = this.props;
 
 		const opts = {
 			playerVars: {
@@ -19,6 +18,8 @@ class YouTubeEmbed extends React.Component {
 	}
 }
 
-YouTubeEmbed.props = {};
+YouTubeEmbed.props = {
+	trailerId: PropTypes.string,
+};
 
 export default YouTubeEmbed;

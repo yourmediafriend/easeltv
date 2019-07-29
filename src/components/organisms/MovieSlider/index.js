@@ -43,7 +43,8 @@ const MovieSlider = props => {
 };
 
 MovieSlider.props = {
-	movieList: PropTypes.object
+	movieList: PropTypes.object,
+	updateMoviePanel: PropTypes.function
 };
 
 export default MovieSlider;

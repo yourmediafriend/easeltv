@@ -8,7 +8,6 @@ const MovieDetailPanel = props => {
 	const {
 		backdrop_path,
 		overview,
-		original_title,
 		genres,
 		production_countries,
 		runtime,
@@ -109,7 +108,16 @@ const MovieDetailPanel = props => {
 };
 
 MovieDetailPanel.props = {
-	movieDetails: PropTypes.object
+	backdrop_path: PropTypes.string,
+	overview: PropTypes.string,
+	original_title: PropTypes.string,
+	genres: PropTypes.array,
+	production_countries: PropTypes.array,
+	runtime: PropTypes.string,
+	title: PropTypes.string,
+	release_date: PropTypes.string,
+	movieVideos: PropTypes.array,
+	handleOpenModal: PropTypes.function,
 };
 
 export default MovieDetailPanel;

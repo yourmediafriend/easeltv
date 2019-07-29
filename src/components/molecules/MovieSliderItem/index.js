@@ -1,29 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { get } from "lodash";
-
 import { getMovieDetails, getMovieVideos } from "../../../apis/themoviedbApi";
 import './MovieSliderItem.css'
 
-
-/* 
-	adult: false
-	backdrop_path: "/wf6VDSi4aFCZfuD8sX8JAKLfJ5m.jpg"
-	genre_ids: (5) [16, 28, 18, 9648, 35]
-	id: 566555
-	original_language: "ja"
-	original_title: "名探偵コナン 紺青の拳（フィスト）"
-	overview: "23rd movie in the "Detective Conan" franchise."
-	popularity: 275.59
-	poster_path: "/86Y6qM8zTn3PFVfCm9J98Ph7JEB.jpg"
-	release_date: "2019-04-12"
-	title: "Detective Conan: The Fist of Blue Sapphire"
-	video: false
-	vote_average: 5
-	vote_count: 25 
-*/
-
-class MovieGridItem extends React.Component {
+class MovieSliderItem extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -60,12 +41,15 @@ class MovieGridItem extends React.Component {
 				<div className={'movie_card_details'}>
 					{title}
 				</div>
-			</div>
-			
+			</div> 
 		);
 	}
 }
 
-MovieGridItem.props = {};
+MovieSliderItem.props = {
+	title: PropTypes.string,
+	poster_path: PropTypes.string,
+	updateMoviePanel: PropTypes.function,
+};
 
-export default MovieGridItem;
+export default MovieSliderItem;

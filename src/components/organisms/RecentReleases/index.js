@@ -57,9 +57,5 @@ class RecentReleases extends React.Component {
 	}
 }
 
-RecentReleases.props = {
-
-};
-
 export default RecentReleases;
 

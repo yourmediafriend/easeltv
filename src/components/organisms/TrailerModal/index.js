@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./TrailerModal.css";
 
 class Modal extends React.Component {
@@ -46,6 +47,8 @@ class Modal extends React.Component {
 	}
 }
 
-Modal.props = {};
+Modal.props = {
+	children: PropTypes.object
+};
 
 export default Modal;

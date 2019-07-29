@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./TrailerLink.css";
 
 class TrailerLink extends React.Component {
@@ -23,6 +24,11 @@ class TrailerLink extends React.Component {
 	}
 }
 
-TrailerLink.props = {};
+TrailerLink.props = {
+	trailerImage: PropTypes.string,
+	trailerId: PropTypes.string,
+	trailerTitle: PropTypes.string,
+	onClick: PropTypes.function,
+};
 
 export default TrailerLink;
