@@ -8,15 +8,16 @@ class TrailerLink extends React.Component {
 	}
 
     handleClickEvent() {
-        const {  Trailertitle, TrailerUrl, onClick } = this.props;
-        onClick(Trailertitle, TrailerUrl);
+        const {  trailerTitle, trailerId, onClick } = this.props;
+        onClick(trailerTitle, trailerId);
     }
 
 	render() {
-		const { TrailerImage, Trailertitle, TrailerUrl, onClick } = this.props;
+		const { trailerImage } = this.props;
 		return (
 			<div className="link_container" onClick={this.handleClickEvent}>
-				<img src={TrailerImage} alt="" />
+				<img src={trailerImage} alt="" />
+				<div className="link_container_overlay" />
 			</div>
 		);
 	}

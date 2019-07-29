@@ -15,29 +15,32 @@ class Modal extends React.Component {
 		this.setState({
 			open: false
 		});
+		this.props.handleCloseModal();
 	}
 
 	componentWillReceiveProps(nextProps, nextContext) {
-
 		if (nextProps.modalOpen && !(this.state.open)) {
 			this.setState({
 				open: true
 			});
 		}
-
 	}
 
 	render() {
+
+		const {children} = this.props;
 		return (
 			<div
 				className={`modal_container ${this.state.open
 					? "modal_container--active"
 					: null}`}
 			>
-				<a href="#" onClick={this.handleCloseEvent}>
-					X
-				</a>
-				Modal Content
+				<header className="modal_header" >
+					<div className="close_button" onClick={this.handleCloseEvent} >
+						<span>Close</span>
+					</div>
+				</header>
+				{children}
 			</div>
 		);
 	}

@@ -7,6 +7,8 @@ import { getRecentReleases } from "../../../apis/themoviedbApi";
 import MovieSlider from "../MovieSlider";
 import MovieDetailPanel from "../MovieDetailPanel";
 import TrailerModal from "../TrailerModal";
+import YouTubeEmbed from "../../atoms/YouTubeEmbed";
+
 
 class RecentReleases extends React.Component {
 
@@ -31,8 +33,8 @@ class RecentReleases extends React.Component {
 		this.setState(() => ({ movieDetails, movieVideos }));
 	}
 
-	handleOpenModal (){
-		this.setState(() => ({ modalOpen: true }));
+	handleOpenModal (trailerTitle, trailerId){
+		this.setState(() => ({ modalOpen: true, trailerTitle, trailerId }));
 	}
 
 	handleCloseModal (){
@@ -48,7 +50,11 @@ class RecentReleases extends React.Component {
 			<div>
 				<MovieSlider movieList={movieList} updateMoviePanel={this.updateMoviePanel}  />
 				<MovieDetailPanel {...movieDetails} movieVideos={movieVideos} handleOpenModal={this.handleOpenModal}/>
-				<TrailerModal  modalOpen={this.state.modalOpen} handleCloseModal={this.handleCloseModal}/>
+				
+				<TrailerModal  modalOpen={this.state.modalOpen} handleCloseModal={this.handleCloseModal}>
+					{this.state.modalOpen ? <YouTubeEmbed trailerId={this.state.trailerId } autoplay={true} allowfullscreen={true} /> : null}
+				</TrailerModal>
+
 			</div>
 		);
 	}

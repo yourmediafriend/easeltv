@@ -83,14 +83,14 @@ const MovieDetailPanel = props => {
 		handleOpenModal
 	} = props;
 
-	const youTubeUrl = "https://www.youtube.com/watch";
+
 	const backdropSize = "w300";
 	const backdropImageUrl = "http://image.tmdb.org/t/p/";
 
 	let year;
 	let genre_str;
 	let production_countries_str;
-	let trailerUrl;
+	let trailerId;
 
 	if (release_date) {
 		year = release_date.split("-")[0];
@@ -116,19 +116,18 @@ const MovieDetailPanel = props => {
 	if (movieVideos) {
 		let trailer = movieVideos.filter(a => a.type === "Trailer");
 		if (trailer[0].site === "YouTube") {
-			let params = `?v=${trailer[0].key}`;
-			trailerUrl = `${youTubeUrl}${params}`;
+			trailerId = trailer[0].key
 		}
 	}
 
 	return (
 		<div className="movie_details">
-			{trailerUrl
+			{trailerId
 				? <div className="trailer_panel">
 						<TrailerLink
-							TrailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`}
-							Trailertitle={title}
-							TrailerUrl={trailerUrl}
+							trailerImage={`${backdropImageUrl}/${backdropSize}/${backdrop_path}`}
+							trailerTitle={title}
+							trailerId={trailerId}
 							onClick={handleOpenModal}
 						/>
 					</div>
