@@ -36,7 +36,7 @@ const MovieSlider = props => {
 								</div>
 							);
 						})
-					: <div>No Movies</div>}
+					: <div>Loading Movies...</div>}
 			</Slider>
 		</div>
 	);
